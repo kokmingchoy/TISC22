@@ -23,9 +23,9 @@ The final boss creature - Dragon (HP 100 / Attack 50) - is impossible to beat th
 
 Since this was a client-server based game, it would be instructive to know what is being communicated over the network between the game client and the game server.
 
-Looking at the source file _*client/networking/netclient.py*_ I noted that there was a parameter "verbose" to the constructor function of class "NetClient" which is set to "False" by default. I changed this value to "True", ran the game, and learned the following:
+Looking at the source file *client/networking/netclient.py* I noted that there was a parameter "verbose" to the constructor function of class "NetClient" which is set to "False" by default. I changed this value to "True", ran the game, and learned the following:
 
-- The client sends Commands to the server which denote the actions the player is taking, e.g. "ATTACK", "HEAL", "BATTLE", "RUN". The list of Commands are enumerated in the source file _*core/models/command.py*_ .
+- The client sends Commands to the server which denote the actions the player is taking, e.g. "ATTACK", "HEAL", "BATTLE", "RUN". The list of Commands are enumerated in the source file *core/models/command.py* .
 - Whenever the client sends a "VALIDATE" command, the server will respond with JSON like the following:
 ```json
 {"hp": 10, "max_hp": 10, "gold": 5, "sword": 0, "potion": 0}
