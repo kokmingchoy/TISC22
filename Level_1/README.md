@@ -47,7 +47,7 @@ I did find a way to easily mine an unlimited amount of Gold (which can later be 
 I then focused on how the game server determines if the player had succeeded in killing the boss creature.
 I found in **server/service/battleservice.py** that the game server has a record of all the Commands issued during a boss fight and acts on those Commands in sequence to derive the internal state of the player and boss statistics.
 
-What was interesting was that in the function **__compute_battle_outcome**, the player's attack on the boss is calculated first _before_ the boss' attack on the player is calculated. This means that as long as I could reduce the boss' HP to zero **in a single attack**, it does not matter that my max HP is 10 and the final boss' attack was 50, it would still be considered a win for the player.
+What was interesting was that in the function **__compute_battle_outcome()**, the player's attack on the boss is calculated first _before_ the boss' attack on the player is calculated. This means that as long as I could reduce the boss' HP to zero **in a single attack**, it does not matter that my max HP is 10 and the final boss' attack was 50, it would still be considered a win for the player.
 
 The key to that is that the game server records the Commands the client sends to it using the function **self.history.log_commands_from_str()** which allows _multiple_ Commands to be recorded at the same time.
 
@@ -102,6 +102,10 @@ class Command(enum):
         self.client.send_command(Command.BIG_ATTACK)
         self.boss.receive_attack_from(self.player)
 ```
+
+Running the game with the above changes, I could dispatch each of the 3 boss creatures with a single round of attack and win the game.
+
+![Screenshot from 2022-08-28 00-24-08](https://user-images.githubusercontent.com/82754379/187042261-3b4bcf1c-26c7-4610-b399-a57054a35298.png)
 
 <br>
 
