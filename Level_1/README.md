@@ -11,8 +11,6 @@ You can deal more damage if you purchase a sword.
 Both Potions and Sword have to be purchased with Gold, which is obtained through mining.
 Unfortunately, whenever mining is undertaken, there is a (20%) chance of dying through an encounter with a "creeper".
 
-![Screenshot from 2022-08-28 00-34-51](https://user-images.githubusercontent.com/82754379/187040054-0b942ffe-04ea-4271-875e-f042b6fb1eb1.png)
-
 Fighting the first boss creature - Slime - is fairly trivial as it has a HP of 5 and if you had bought a Sword, you can finish it off in 2 rounds of attack.
 
 Fighting the second boss creature - Wolf (HP 30 / Attack 3) - is a bit more challenging but still doable as long as you have enough Potions.
@@ -20,3 +18,17 @@ Fighting the second boss creature - Wolf (HP 30 / Attack 3) - is a bit more chal
 ![Screenshot from 2022-08-28 00-35-57](https://user-images.githubusercontent.com/82754379/187040069-e3ff46bb-4841-497c-b81d-8c9cb67462ab.png)
 
 The final boss creature - Dragon (HP 100 / Attack 50) - is impossible to beat through normal gameplay because after your first round of attack or use of Potion, its attack will instantly kill you (since you only have a maximum HP of 10).
+
+## Exploring the Code
+
+Since this was a client-server based game, it would be instructive to know what is being communicated over the network between the game client and the game server.
+
+Looking at the source file _*client/networking/netclient.py*_ I noted that there was a parameter "verbose" to the constructor function of class "NetClient" which is set to "False" by default. I changed this value to "True", ran the game, and learned the following:
+
+- The client sends Commands to the server which denote the actions the player is taking, e.g. "ATTACK", "HEAL", "BATTLE", "RUN". The list of Commands are enumerated in the source file _*core/models/command.py*_ .
+- Whenever the client sends a "VALIDATE" command, the server will respond with JSON like the following:
+```json
+{"hp": 10, "max_hp": 10, "gold": 5, "sword": 0, "potion": 0}
+```
+- All values transmitted between the client and server are Base64-encoded
+
