@@ -95,7 +95,7 @@ class Command(enum):
 **client/event/battleevent.py**
 ```python
     def __attack_boss(self):
-        ### Originally line below commented out
+        ### Original line below commented out
         ### self.client.send_command(Command.ATTACK)
         
         ### Send multiple ATTACK commands
