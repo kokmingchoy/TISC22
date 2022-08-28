@@ -33,7 +33,8 @@ This second part of Level 3 included 3 hints:
 
 ![Screenshot from 2022-08-28 19-47-15](https://user-images.githubusercontent.com/82754379/187075072-1b91f634-f1d0-48a2-8892-b0d088d24246.png)
 
-![Screenshot from 2022-08-28 19-47-40](https://user-images.githubusercontent.com/82754379/187075080-71f56ecf-a4e9-4f9f-a327-3505126688b1.png)
+![image](https://user-images.githubusercontent.com/82754379/187083445-4695a255-62fa-4450-962b-1a54700f77b6.png)
+
 
 Ran **binwalk** to identify what may be in that disk image:
 ```bash
