@@ -32,6 +32,7 @@ This second part of Level 3 included 3 hints:
 ![Screenshot from 2022-08-28 19-46-32](https://user-images.githubusercontent.com/82754379/187075062-33376b1d-b1d0-407a-9b8b-3cb1dd31d093.png)
 
 ![Screenshot from 2022-08-28 19-47-15](https://user-images.githubusercontent.com/82754379/187075072-1b91f634-f1d0-48a2-8892-b0d088d24246.png)
+
 Doing an image search in Google on the above turned up ![TrueCrypt](https://en.wikipedia.org/wiki/TrueCrypt), which can "can create a virtual encrypted disk within a file, or encrypt a partition or the whole storage device (pre-boot authentication)."
 
 ![image](https://user-images.githubusercontent.com/82754379/187083445-4695a255-62fa-4450-962b-1a54700f77b6.png)
