@@ -7,31 +7,9 @@ Besides the whitepaper document that was provided there was also a login screen 
 ![Screenshot from 2022-08-28 11-54-33](https://user-images.githubusercontent.com/82754379/187056934-28210410-30d6-4cd8-92fb-ddd4b7c73954.png)
 
 
-Without having read through the whitepaper document first I simply played around with the login screen.
+The whitepaper states that the input to the server must be supplied as a string representation of a binary number of 8 bits (i.e. from "00000000" to "11111111").
 
-- Simply hitting 'enter' at the "Challenge Me #01" prompt threw an *AssertionError* :
-```python
-Challenge Me #01 <--
-Traceback (most recent call last):
-  File "/home/leaky/main.py", line 63, in <module>
-    assert len(input_vec) == 8
-AssertionError
-```
+The user/player gets to send 8 challenge inputs to the server (which responds accordingly after each challenge, based on the SECRET_KEY used in the challenge/response calculations), and subsequently the server gets to send 8 challenge values to the player, who must respond accordingly to prove he also knows the SECRET_KEY used in the calculations.
 
-- Looks like the input needs to be 8 characters in length. Giving a random input of 8 characters threw a different *AssertionError* :
-```python
-Challenge Me #01 <-- 12345678
-Traceback (most recent call last):
-  File "/home/leaky/main.py", line 64, in <module>
-    assert input_vec.count("1") + input_vec.count("0") == 8
-AssertionError
-```
+Since the SECRET_KEY is randomly-generated on each new session to the authentication server we could not use 2 live sessions to the server to play the responses of one session as the response inputs to the other session.
 
-- Looks like the input needs to just be "1"s and "0"s (in other words, a string representation of a binary number between "0000000" to "11111111"):
-```python
-Challenge Me #01 <-- 10000000
-My Response --> 11101111
-Challenge Me #02 <--
-```
-
-The counter in the prompt suggests the way to get pass the authentication would be to supply a series of correct challenge inputs to a series of responses.
