@@ -58,7 +58,7 @@ $ binwalk --dd='.*' PATIENT0
 
 **binwalk** helpfully extracted all 8 files and even deflated those that were zlib-compressed.
 
-After giving the files useful file name extensions based on what the command **file** reported, we have the following:
+After giving the files relevant file name extensions, we have the following:
 ```bash
 511000.png: PNG image data, 1227 x 57, 8-bit/color RGB, non-interlaced
 51105B.bin: data
