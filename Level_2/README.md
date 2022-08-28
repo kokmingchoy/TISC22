@@ -4,7 +4,8 @@
 
 Besides the whitepaper document that was provided there was also a login screen provided at **chal00bq3ouweqtzva9xcobep6spl5m75fucey.ctf.sg:56765** :
 
-![Screenshot from 2022-08-28 11-48-16](https://user-images.githubusercontent.com/82754379/187056667-72f0543a-aff8-4602-b2c0-2b9bddd5eb05.png)
+![Screenshot from 2022-08-28 11-54-33](https://user-images.githubusercontent.com/82754379/187056934-28210410-30d6-4cd8-92fb-ddd4b7c73954.png)
+
 
 Without having read through the whitepaper document first I simply played around with the login screen.
 
