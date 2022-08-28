@@ -93,10 +93,12 @@ This was interesting. The initials BPB can also refer to the term "BIOS Paramete
 Was this an advice to determine what the correct 8 bytes were?
 
 ## File 4 - 53E092.ttf
-Supposedly a Microsoft True Type Font file
+Supposedly a Microsoft True Type Font file.
+Opened to show "Calibri, Bold".
 
 ## File 5 - 56D678.ttf
 Supposedly a Microsoft True Type Font file
+Opened to show "Calibri, Regular".
 
 ## File 6 - 599192.jpg
 Looks like the top part of the image seen in **53E000.pdf**.
