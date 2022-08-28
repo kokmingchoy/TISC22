@@ -84,6 +84,8 @@ When Base32-decoded it read:
 
 ## File 2 - 51105B.bin
 Binary data of unknown format. Could this be the "stream" in the clue from the Base32-encoded string?
+I'm not so sure because the beginning of this data (at offset 0x51105B) overlapped with part of the contents of **511000.png** which came from offset 0x511000. It could have been an error on the part of **binwalk** to consider it as data just because of the text string "DAT" that appeared just before this binary data in the disk image.
+
 
 ## File 3 - 53E000.pdf
 ![image](https://user-images.githubusercontent.com/82754379/187078336-74d0bf0a-685c-4ca5-904d-a9da9db15ea7.png)
