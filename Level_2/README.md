@@ -20,7 +20,7 @@ In addition it shows the following:
 
 So, the SECRET_KEY may be represented by an 8-by-8 matrix of 1's and 0's.
 
-The solution is surprisingly simple: Given the opportunity to provide 8 challenge inputs, we can provide as input an 8-by-8 Identity Matrix (where each column of 1's and 0's are the challenge inputs). The resultant responses will give us back the SECRET_KEY matrix (where each column of 1's and 0's is a response output from the server).
+The solution is simple: Given the opportunity to provide 8 challenge inputs, we can provide as input an 8-by-8 Identity Matrix (where each column of 1's and 0's correspond with each of the challenge inputs). The resultant responses will give us back the SECRET_KEY matrix (where each column of 1's and 0's correspond with each response output from the server).
 
 Once we have the SECRET_KEY in an 8-by-8 matrix, we can then use it to generate the appropriate response per challenge from the server, like so (running in Python REPL):
 
