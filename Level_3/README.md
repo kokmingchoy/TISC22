@@ -35,3 +35,37 @@ This second part of Level 3 included 3 hints:
 
 ![Screenshot from 2022-08-28 19-47-40](https://user-images.githubusercontent.com/82754379/187075080-71f56ecf-a4e9-4f9f-a327-3505126688b1.png)
 
+Ran **binwalk** to identify what may be in that disk image:
+```bash
+$ binwalk PATIENT0
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+5312512       0x511000        PNG image, 1227 x 57, 8-bit/color RGB, non-interlaced
+5312603       0x51105B        Zlib compressed data, compressed
+5496832       0x53E000        PDF document, version: "1.7"
+5496978       0x53E092        Zlib compressed data, default compression
+5691000       0x56D678        Zlib compressed data, default compression
+5869970       0x599192        JPEG image data, JFIF standard 1.01
+5966510       0x5B0AAE        JPEG image data, JFIF standard 1.01
+6004382       0x5B9E9E        Zlib compressed data, default compression
+```
+
+Ran **binwalk** again to extract the 8 files identified:
+```bash
+$ binwalk --dd='.*' PATIENT0
+```
+
+**binwalk** helpfully extracted all 8 files and even deflated those that were zlib-compressed.
+
+After giving the files useful file name extensions based on what the command **file** reported, we have the following:
+```bash
+511000.png: PNG image data, 1227 x 57, 8-bit/color RGB, non-interlaced
+51105B.bin: data
+53E000.pdf: PDF document, version 1.7, 1 pages
+53E092.ttf: TrueType Font data, digitally signed, 22 tables, 1st "DSIG", 45 names, Unicode, \251 2018 Microsoft Corporation. All Rights Reserved.
+56D678.ttf: TrueType Font data, digitally signed, 22 tables, 1st "DSIG", 45 names, Unicode, \251 2018 Microsoft Corporation. All Rights Reserved.
+599192.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 96x96, segment length 16, baseline, precision 8, 1882x1028, components 3
+5B0AAE.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 96x96, segment length 16, baseline, precision 8, 1882x514, components 3
+5B9E9E.txt: ASCII text, with very long lines (556)
+```
