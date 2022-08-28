@@ -69,3 +69,42 @@ After giving the files useful file name extensions based on what the command **f
 5B0AAE.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 96x96, segment length 16, baseline, precision 8, 1882x514, components 3
 5B9E9E.txt: ASCII text, with very long lines (556)
 ```
+
+Examining each file:
+
+## File 1 - 511000.png
+Looks like Base32-encoded string:
+```
+GIXFI2DJOJZXI6JAMZXXEIDUNBSSAZTMMFTT6ICHN4QGM2LOMQQHI2DFEBZXI4TFMFWS4CQ=
+```
+When Base32-decoded it read:
+```
+2.Thirsty for the flag? Go find the stream.
+```
+
+## File 2 - 51105B.bin
+Binary data of unknown format. Could this be the "stream" in the clue from the Base32-encoded string?
+
+## File 3 - 53E000.pdf
+![image](https://user-images.githubusercontent.com/82754379/187078336-74d0bf0a-685c-4ca5-904d-a9da9db15ea7.png)
+
+This was interesting. The initials BPB can also refer to the term "BIOS Parameter Block", which is where the 8 corrupted bytes were in the MBR of the disk image (from offset 0x20 through 0x27).
+
+Was this an advice to determine what the correct 8 bytes were?
+
+## File 4 - 53E092.ttf
+Supposedly a Microsoft True Type Font file
+
+## File 5 - 56D678.ttf
+Supposedly a Microsoft True Type Font file
+
+## File 6 - 599192.jpg
+Looks like the top part of the image seen in **53E000.pdf**.
+
+## File 7 - 5B0AAE.jpg
+Looks like the bottom part of the image seen in **53E000.pdf**.
+
+## File 8 - 5B9E9E.txt
+Looks like some readings possibly from medical instrumentation (given the theme of this Level 3 challenge).
+
+
