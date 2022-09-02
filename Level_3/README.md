@@ -149,7 +149,7 @@ total 8
 This **message.png** displays:
 ![image](https://user-images.githubusercontent.com/82754379/188159930-bc96bbd5-7126-4f73-a42a-215300d280d6.png)
 
-The text represents a Base32-encoded string which decodes into:
+The text represents a Base32-encoded string which decoded into:
 ```
 2.Thirsty for the flag? Go find the stream.
 ```
