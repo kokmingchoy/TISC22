@@ -35,6 +35,10 @@ This second part of Level 3 included 3 hints:
 
 Doing an image search in Google on the above turned up [TrueCrypt](https://en.wikipedia.org/wiki/TrueCrypt), which can "can create a virtual encrypted disk within a file, or encrypt a partition or the whole storage device (pre-boot authentication)."
 
+TrueCrypt has been discontinued, but there is a fork of it called [VeraCrypt](https://en.wikipedia.org/wiki/VeraCrypt) which I managed to install on my machine.
+
+<br>
+
 ![image](https://user-images.githubusercontent.com/82754379/187083445-4695a255-62fa-4450-962b-1a54700f77b6.png)
 
 
