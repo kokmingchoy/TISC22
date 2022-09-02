@@ -11,7 +11,7 @@ $MFT start cluster 4, $MFTMirror start cluster 767, bytes/RecordSegment 2^(-1*24
 clusters/index block 1, serial number 05c66c6b160cddda1
 ```
 
-So, this was a disk image which included a DOS Master Boot Record (MBR), so I assumed the corrupted bytes were in the first 512 bytes of the file.
+This looked like an NTFS disk image with a Master Boot Record (MBR), so I assumed the corrupted bytes were in the first 512 bytes of the file.
 
 Viewing the file in Ghex, the letters "TISC" at offset 0x20 immediately jumped out.
 
