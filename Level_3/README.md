@@ -118,4 +118,38 @@ Looks like the bottom part of the image seen in **53E000.pdf**.
 ## File 8 - 5B9E9E.txt
 Looks like some readings possibly from medical instrumentation (given the theme of this Level 3 challenge).
 
+<hr height="2">
 
+Trying to mount the given NTFS disk image ("PATIENT0") on my Ubuntu machine:
+```bash
+$ sudo mount -t ntfs -o ro PATIENT0 /mnt/patient0/ 
+
+Reserved fields aren't zero (0, 0, 0, 0, 1129531732, 0). 
+Failed to mount '/dev/loop42': Invalid argument 
+The device '/dev/loop42' doesn't seem to have a valid NTFS. 
+Maybe the wrong device is used? Or the whole disk instead of a 
+partition (e.g. /dev/sda, not /dev/sda1)? Or the other way around? 
+```
+
+The integer number 1129531732 may be represented by the hexadecimal value 0x43534954. When rearranged in little endian format, we get the hexadecimal bytes 0x54 0x49 0x53 0x43, which happened to be ASCII for "TISC"!
+
+On a hunch, I zero'ed out the 8 "corrupted" bytes in a copy of that disk image ("PATIENT0.mod") and tried to mount the disk image again:
+```bash
+$ sudo mount -t ntfs -o ro PATIENT0.mod /mnt/patient0/
+$
+```
+
+The disk image mounted successfully and it was possible to list the contents at the mount point:
+```bash
+$ ls -l /mnt/patient0/
+total 8
+-rwxrwxrwx 1 root root 6049 Aug 20 00:40 message.png
+```
+
+This **message.png** displays:
+![image](https://user-images.githubusercontent.com/82754379/188159930-bc96bbd5-7126-4f73-a42a-215300d280d6.png)
+
+The text represents a Base32-encoded string which decodes into:
+```
+2.Thirsty for the flag? Go find the stream.
+```
