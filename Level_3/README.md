@@ -121,7 +121,7 @@ Looks like some readings possibly from medical instrumentation (given the theme 
 <hr height="2">
 
 Trying to mount the given NTFS disk image ("PATIENT0") on my Ubuntu machine:
-```bash
+```
 $ sudo mount -t ntfs -o ro PATIENT0 /mnt/patient0/ 
 
 Reserved fields aren't zero (0, 0, 0, 0, 1129531732, 0). 
