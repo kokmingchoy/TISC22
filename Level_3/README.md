@@ -278,7 +278,7 @@ TISC{md5 hash of sound clip}
 
 Ah, we are so close to the flag!
 
-The **flag.ppsm** file is actually a ZIP container, so it was possible to simple list the files in it using **unzip** and then selectively extract only the audio file:
+The **flag.ppsm** file is actually a ZIP container, so it was possible to list the files in it using **unzip** and then selectively extract only the audio file:
 ```
 $ unzip -l flag.ppsm
 
