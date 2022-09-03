@@ -156,3 +156,68 @@ The text represents a Base32-encoded string which decoded into:
 ```
 2.Thirsty for the flag? Go find the stream.
 ```
+
+The clue mentioned "stream" and it occurred to me that the NTFS disk image may contain Alternate Data Streams (ADS).
+
+We can look for listing of files (including ADS) in an NTFS disk image with the **fls** program:
+```
+$ fls PATIENT0.mod
+
+r/r 4-128-1: $AttrDef 
+r/r 8-128-2: $BadClus 
+r/r 8-128-1: $BadClus:$Bad 
+r/r 6-128-1: $Bitmap 
+r/r 7-128-1: $Boot 
+d/d 11-144-2: $Extend 
+r/r 2-128-1: $LogFile 
+r/r 0-128-1: $MFT 
+r/r 1-128-1: $MFTMirr 
+r/r 9-128-2: $Secure:$SDS 
+r/r 9-144-7: $Secure:$SDH 
+r/r 9-144-4: $Secure:$SII 
+r/r 10-128-1: $UpCase 
+r/r 10-128-2: $UpCase:$Info 
+r/r 3-128-3: $Volume 
+r/r 31-128-1: message.png 
+r/r 31-128-3: message.png:$RAND 
+-/r * 32-128-1: broken.pdf 
+V/V 256: $OrphanFiles 
+```
+
+There was indeed an Alternate Data Stream behind **message.png**, which could be extracted with the **icat** program:
+```
+$ icat PATIENT0.mod 31-128-3 > hidden.bin
+$ ls -l hidden.bin
+```
+
+The extracted file is 2,097,401 bytes in length.
+
+Viewing it in Ghex revealed the following at the beginning of the file:
+![Screenshot from 2022-09-03 12-28-03](https://user-images.githubusercontent.com/82754379/188261171-42f6c47c-1ee0-4ef4-bcb0-36b98bd4a078.png)
+
+The sentence read:
+```
+3. Are these True random bytes for Cryptology?
+```
+
+This extracted file **hidden.bin** could be a VeraCrypt volume.
+I tried to "mount" it in VeraCrypt with the password `f76635ab` (flag from Part 1) but it did not work.
+
+I modifed **hidden.bin** to get rid of the sentence (the clue) at the beginning of the file.
+I managed to eventually mount the modified **hidden.bin** in VeraCrypt with the password `f76635ab`, with the option "TrueCrypt mode" checked.
+
+The VeraCrypt volume that was mounted had a single file **outer.jpg** :
+![outer](https://user-images.githubusercontent.com/82754379/188261374-3a16e39a-99ff-4854-ba20-7de9239751b2.jpg)
+
+The end of **hidden.bin** had the following bytes:
+![Screenshot from 2022-09-03 12-39-28](https://user-images.githubusercontent.com/82754379/188261411-def0125a-615c-4dfc-a62e-48d70128a1ea.png)
+
+The clue read:
+```
+If you need a password, the original reading of the BPB was actually Checked and ReChecked 32 times!
+```
+
+The unusual capitalisation in the phrase "Checked and ReChecked" and the numeral 32 suggested the clue was "CRC32".
+
+
+
