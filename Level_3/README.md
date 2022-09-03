@@ -193,7 +193,7 @@ $ ls -l volume.bin
 The extracted file was 2,097,401 bytes in length.
 
 Viewing it in Ghex revealed the following at the beginning of the file:
-
+![image](https://user-images.githubusercontent.com/82754379/188261779-9314f3f0-7d82-4bc8-8d8b-293f1282fabb.png)
 
 The sentence read:
 ```
@@ -210,7 +210,7 @@ The VeraCrypt volume that was mounted had a single file **outer.jpg** :
 ![outer](https://user-images.githubusercontent.com/82754379/188261374-3a16e39a-99ff-4854-ba20-7de9239751b2.jpg)
 
 The end of **volume.bin** had the following bytes:
-
+![image](https://user-images.githubusercontent.com/82754379/188261817-2c20884a-6919-4ae6-81d2-76497ebd4f9e.png)
 
 The clue read:
 ```
@@ -219,5 +219,5 @@ If you need a password, the original reading of the BPB was actually Checked and
 
 The unusual capitalisation in the phrase "Checked and ReChecked" and the numeral 32 suggested the clue was "CRC32".
 
-It so happens that a CRC32 checksum is 8 bytes in length. From the clue in **outer.jpg** and Hint 4, I assume we needed to find a 9-letter English word which produces the CRC32 checksum value of `F7 66 35 AB` (in hexadecimal). That word would be the password for the hidden VeraCrypt volume in **volume.bin**.
+It so happens that a CRC32 checksum is 4 bytes in length. From the clue in **outer.jpg** and Hint 4, I assume we needed to find a 9-letter English word which produces the CRC32 checksum value of `F7 66 35 AB` (in hexadecimal). That word would be the password for the hidden VeraCrypt volume in **volume.bin**.
 
