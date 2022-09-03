@@ -339,4 +339,4 @@ Archive:  flag.ppsm
   f9fc54d767edc937fc24f7827bf91cfe  media1.mp3
   ```
   
-  🚩 Level 3 Part 2 flag: **`TISC{f9fc54d767edc937fc24f7827bf91cfe}`**
+  🚩 **Level 3 Part 2 flag: `TISC{f9fc54d767edc937fc24f7827bf91cfe}`**
