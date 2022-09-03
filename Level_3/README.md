@@ -277,3 +277,66 @@ TISC{md5 hash of sound clip}
 ```
 
 Ah, we are so close to the flag!
+
+The **flag.ppsm** file is actually a ZIP container, so it was possible to simple list the files in it using **unzip** and then selectively extract only the audio file:
+```
+$ unzip -l flag.ppsm
+
+Archive:  flag.ppsm
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     3273  1980-01-01 00:00   [Content_Types].xml
+      738  1980-01-01 00:00   _rels/.rels
+      838  1980-01-01 00:00   ppt/slides/_rels/slide1.xml.rels
+     3653  1980-01-01 00:00   ppt/slides/slide1.xml
+     3380  1980-01-01 00:00   ppt/presentation.xml
+      976  1980-01-01 00:00   ppt/_rels/presentation.xml.rels
+    12846  1980-01-01 00:00   ppt/slideMasters/slideMaster1.xml
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout2.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout1.xml.rels
+     3170  1980-01-01 00:00   ppt/slideLayouts/slideLayout11.xml
+     1991  1980-01-01 00:00   ppt/slideMasters/_rels/slideMaster1.xml.rels
+     3648  1980-01-01 00:00   ppt/slideLayouts/slideLayout1.xml
+     2891  1980-01-01 00:00   ppt/slideLayouts/slideLayout2.xml
+     4384  1980-01-01 00:00   ppt/slideLayouts/slideLayout3.xml
+     3756  1980-01-01 00:00   ppt/slideLayouts/slideLayout4.xml
+     6285  1980-01-01 00:00   ppt/slideLayouts/slideLayout5.xml
+     2223  1980-01-01 00:00   ppt/slideLayouts/slideLayout6.xml
+     1897  1980-01-01 00:00   ppt/slideLayouts/slideLayout7.xml
+     4704  1980-01-01 00:00   ppt/slideLayouts/slideLayout8.xml
+     4623  1980-01-01 00:00   ppt/slideLayouts/slideLayout9.xml
+     2946  1980-01-01 00:00   ppt/slideLayouts/slideLayout10.xml
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout3.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout4.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout5.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout6.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout7.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout8.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout9.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout10.xml.rels
+      311  1980-01-01 00:00   ppt/slideLayouts/_rels/slideLayout11.xml.rels
+    16169  1980-01-01 00:00   ppt/media/image1.png
+   147982  1980-01-01 00:00   ppt/media/image2.jpg
+    11197  1980-01-01 00:00   docProps/thumbnail.jpeg
+     6807  1980-01-01 00:00   ppt/theme/theme1.xml
+      816  1980-01-01 00:00   ppt/presProps.xml
+      182  1980-01-01 00:00   ppt/tableStyles.xml
+      810  1980-01-01 00:00   ppt/viewProps.xml
+     1299  1980-01-01 00:00   docProps/app.xml
+   961443  1980-01-01 00:00   ppt/media/media1.mp3
+      644  1980-01-01 00:00   docProps/core.xml
+---------                     -------
+  1218992                     40 files
+  ```
+  ```
+  $ unzip flag.ppsm ppt/media/media1.mp3
+  ```
+  
+  Finally we generate the MD5 hash of that media file:
+  ```
+  $ md5sum media1.mp3
+  
+  f9fc54d767edc937fc24f7827bf91cfe  media1.mp3
+  ```
+  
+  🚩 Level 3 Part 2 flag: **`TISC{f9fc54d767edc937fc24f7827bf91cfe}`**
