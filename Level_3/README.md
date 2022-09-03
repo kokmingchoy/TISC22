@@ -186,31 +186,31 @@ V/V 256: $OrphanFiles
 
 There was indeed an Alternate Data Stream behind **message.png**, which could be extracted with the **icat** program:
 ```
-$ icat PATIENT0.mod 31-128-3 > hidden.bin
-$ ls -l hidden.bin
+$ icat PATIENT0.mod 31-128-3 > volume.bin
+$ ls -l volume.bin
 ```
 
-The extracted file is 2,097,401 bytes in length.
+The extracted file was 2,097,401 bytes in length.
 
 Viewing it in Ghex revealed the following at the beginning of the file:
-![Screenshot from 2022-09-03 12-28-03](https://user-images.githubusercontent.com/82754379/188261171-42f6c47c-1ee0-4ef4-bcb0-36b98bd4a078.png)
+
 
 The sentence read:
 ```
 3. Are these True random bytes for Cryptology?
 ```
 
-This extracted file **hidden.bin** could be a VeraCrypt volume.
+This extracted file **volume.bin** could be a VeraCrypt volume.
 I tried to "mount" it in VeraCrypt with the password `f76635ab` (flag from Part 1) but it did not work.
 
-I modifed **hidden.bin** to get rid of the sentence (the clue) at the beginning of the file.
-I managed to eventually mount the modified **hidden.bin** in VeraCrypt with the password `f76635ab`, with the option "TrueCrypt mode" checked.
+I modifed **volume.bin** to get rid of the bytes that made up the sentence (the clue) at the beginning of the file.
+I managed to eventually mount the modified **volume.bin** in VeraCrypt with the password `f76635ab`, with the option "TrueCrypt mode" checked.
 
 The VeraCrypt volume that was mounted had a single file **outer.jpg** :
 ![outer](https://user-images.githubusercontent.com/82754379/188261374-3a16e39a-99ff-4854-ba20-7de9239751b2.jpg)
 
-The end of **hidden.bin** had the following bytes:
-![Screenshot from 2022-09-03 12-39-28](https://user-images.githubusercontent.com/82754379/188261411-def0125a-615c-4dfc-a62e-48d70128a1ea.png)
+The end of **volume.bin** had the following bytes:
+
 
 The clue read:
 ```
@@ -219,5 +219,5 @@ If you need a password, the original reading of the BPB was actually Checked and
 
 The unusual capitalisation in the phrase "Checked and ReChecked" and the numeral 32 suggested the clue was "CRC32".
 
-
+It so happens that a CRC32 checksum is 8 bytes in length. From the clue in **outer.jpg** and Hint 4, I assume we needed to find a 9-letter English word which produces the CRC32 checksum value of `F7 66 35 AB` (in hexadecimal). That word would be the password for the hidden VeraCrypt volume in **volume.bin**.
 
