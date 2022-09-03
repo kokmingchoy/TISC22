@@ -266,7 +266,7 @@ The password to the hidden VeraCrypt volume was `c01lis1on`.
 
 We are now on the last stretch of this Level!
 
-Selecting the file **volume.bin** again, this time using the password "c01lis1on", I mounted the hidden volume with VeraCrypt ("TrueCrypt mode" is checked).
+Selecting the file **volume.bin** again, this time using the password `c01lis1on`, I mounted the hidden volume with VeraCrypt ("TrueCrypt mode" is checked).
 
 The hidden volume revealed a **flag.ppsm** file, which when opened, displayed the following image and played some background music:
 ![Screenshot from 2022-09-03 23-22-48](https://user-images.githubusercontent.com/82754379/188277914-549ee345-9c78-400c-8f5c-600ec7ff8df4.png)
