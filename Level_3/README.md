@@ -221,3 +221,59 @@ The unusual capitalisation in the phrase "Checked and ReChecked" and the numeral
 
 It so happens that a CRC32 checksum is 4 bytes in length. From the clue in **outer.jpg** and Hint 4, I assume we needed to find a 9-letter English word which produces the CRC32 checksum value of `F7 66 35 AB` (in hexadecimal). That word would be the password for the hidden VeraCrypt volume in **volume.bin**.
 
+I wrote a small Python script to take in words from *stdin* and print out the word and its corresponding CRC32 checksum only if the checksum matches what we are looking for (0xf76635ab):
+
+**crc32.py**
+```python
+import sys
+import zlib
+
+def calculate_crc(s):
+    return hex(zlib.crc32(s) & 0xffffffff)
+
+def main():
+    for line in sys.stdin:
+        input = bytes(line.rstrip(), 'utf-8')
+        crc32 = calculate_crc(input)
+        if (crc32 == '0xf76635ab'):
+            print("{}: {}".format(input, crc32))
+
+if __name__=="__main__" :
+    main()
+```
+
+Initially I tried 9-character long words from word lists like the infamous **rockyou.txt**. Nothing worked. <br>
+Also, brute-forcing with a 9-character lowercase word would take too long, so it's not the correct approach here.
+
+Eventually I realised that **outer.jpg** was actually very specific about the nature of the word we are looking for. 
+Not only was it 9 characters, it started with the letter 'c' and ended with the letter 'n', as in the word "collision".
+*However*, just like many of the words in the clue were written in Leet, this suggested the word was indeed "collision" but some of the characters (notably 'o', 'l' and 's') may have to be replaced by their Leet equivalents (i.e. '0', '1' and '5' respectively).
+
+I decided to use the word-generating program **crunch** to generate the necessary words to try:
+```
+$ crunch 9 9 cilnos015 | egrep "^c.......n" > collision_words.txt 
+
+$ wc –l collision_words.txt 
+4782969 collision_words.txt 
+
+$ cat collision_words.txt | ./crc32.py 
+*****  b'c01lis1on': 0xf76635ab
+```
+
+The password to the hidden VeraCrypt volume was "**c01lis1on**".
+
+<hr width="2">
+
+We are now on the last stretch of this Level!
+
+Selecting the file **volume.bin** again, this time using the password "c01lis1on", I mounted the hidden volume with VeraCrypt ("TrueCrypt mode" is checked).
+
+The hidden volume revealed a **flag.ppsm** file, which when opened, displayed the following image and played some background music:
+![Screenshot from 2022-09-03 23-22-48](https://user-images.githubusercontent.com/82754379/188277914-549ee345-9c78-400c-8f5c-600ec7ff8df4.png)
+
+The clue read:
+```
+TISC{md5 hash of sound clip}
+```
+
+Ah, we are so close to the flag!
