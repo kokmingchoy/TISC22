@@ -260,9 +260,9 @@ $ cat collision_words.txt | ./crc32.py
 *****  b'c01lis1on': 0xf76635ab
 ```
 
-The password to the hidden VeraCrypt volume was "**c01lis1on**".
+The password to the hidden VeraCrypt volume was `c01lis1on`.
 
-<hr width="2">
+<hr height="2">
 
 We are now on the last stretch of this Level!
 
