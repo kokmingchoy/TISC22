@@ -27,7 +27,7 @@ Assuming "TISC" was the first 4 of 8 contiguous corrupted bytes, the flag may be
 
 ![Screenshot from 2022-08-28 19-45-02](https://user-images.githubusercontent.com/82754379/187075009-a7231499-61ea-4d15-abab-b64150021a0c.png)
 
-This second part of Level 3 included 3 hints:
+This second part of Level 3 included 4 hints:
 
 ![Screenshot from 2022-08-28 19-46-32](https://user-images.githubusercontent.com/82754379/187075062-33376b1d-b1d0-407a-9b8b-3cb1dd31d093.png)
 
@@ -41,6 +41,9 @@ TrueCrypt has been discontinued, but there is a fork of it called [VeraCrypt](ht
 
 ![image](https://user-images.githubusercontent.com/82754379/187083445-4695a255-62fa-4450-962b-1a54700f77b6.png)
 
+![image](https://user-images.githubusercontent.com/82754379/188256547-09b12403-a76b-491b-ac72-37dd76475f38.png)
+
+<hr width=2>
 
 Ran **binwalk** to identify what may be in that disk image:
 ```bash
