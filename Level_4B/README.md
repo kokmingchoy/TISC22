@@ -4,5 +4,5 @@
 
 Heading over to the given URL at https://d20whnyjsgpc34.cloudfront.net/ I saw a page with (six) cat pictures:
 
-![Screenshot from 2022-09-04 22-37-33](https://user-images.githubusercontent.com/82754379/188319201-c9985872-4341-4a6d-8edc-1ad0a2bf0960.png)
+![image](https://user-images.githubusercontent.com/82754379/188319297-21c0eb57-3ce8-449e-b9f0-f32a6f7db61f.png)
 
