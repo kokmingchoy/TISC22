@@ -49,6 +49,7 @@ Perhaps there was another clue in the *alt* text?
 ```
 ## S3 Bucket
 
-The clue indicated that there was an S3 bucket named "palindromecloudynekos", so I tried to access it within the browser at the URL "palindromecloudynekos.amazonaws.com" and got an "Access Denied" result:
+The clue indicated that there was an S3 bucket named "palindromecloudynekos", so I tried to access it within the browser at the URL "palindromecloudynekos.s3.amazonaws.com" and got an "Access Denied" result:
+
 ![Screenshot from 2022-09-05 00-23-26](https://user-images.githubusercontent.com/82754379/188323431-f0a06d2a-65de-45fc-9232-a8447d61cd75.png)
 
