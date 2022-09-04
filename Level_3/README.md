@@ -141,6 +141,9 @@ On a hunch, I zero'ed out the 8 "corrupted" bytes in a copy of that disk image (
 $ sudo mount -t ntfs -o ro PATIENT0.mod /mnt/patient0/
 $
 ```
+> Postscript: While I had zero'ed out all the "corrupted" bytes at offset 0x20 through 0x27, and managed to mount the disk image, in reality the correct > values should have been `00 00 00 00 80 00 80 00` (hexadecimal), taking reference from a duplicate of the MBR at the end of the disk image, starting at > offset 0x5FFE00. The original uncorrupted bytes are at offset 0x5FFE20 through 0x5FFE27.
+
+<br>
 
 The disk image mounted successfully and it was possible to list the contents at the mount point:
 ```bash
