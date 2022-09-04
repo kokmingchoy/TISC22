@@ -4,7 +4,8 @@
 
 Heading over to the given URL at https://d20whnyjsgpc34.cloudfront.net/ I saw a page with (six) cat pictures:
 
-![image](https://user-images.githubusercontent.com/82754379/188319297-21c0eb57-3ce8-449e-b9f0-f32a6f7db61f.png)
+![image](https://user-images.githubusercontent.com/82754379/188319697-22cd6b07-2594-4812-a149-74ed2375fe5d.png)
+
 
 The source code for the web page revealed what could be clues:
 ```html
