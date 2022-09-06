@@ -74,18 +74,23 @@ $ cat api/notes.txt
 
 # Neko Access System Invocation Notes
 
-Invoke with the passcode in the header "x-cat-header". The passcode is found on the cloudfront site, all lower caps and separated using underscore.
+Invoke with the passcode in the header "x-cat-header". The passcode is found on the cloudfront site, 
+all lower caps and separated using underscore.
 
 https://b40yqpyjb3.execute-api.ap-southeast-1.amazonaws.com/prod/agent
 
-All EC2 computing instances should be tagged with the key: 'agent' and the value set to your username. Otherwise, the antivirus cleaner will wipe out the resources.
+All EC2 computing instances should be tagged with the key: 'agent' and the value set to your username. 
+Otherwise, the antivirus cleaner will wipe out the resources.
 ```
 
 The given URL must be accessed with an HTTP GET request with the correct header in order to obtain the next clue:
 ```
 $ curl -H "x-cat-header: cats_rule_the_world" https://b40yqpyjb3.execute-api.ap-southeast-1.amazonaws.com/prod/agent
 
-{"Message": "Welcome there agent! Use the credentials wisely! It should be live for the next 120 minutes! Our antivirus will wipe them out and the associated resources after the expected time usage.", "Access_Key": "AKIAQYDFBGMS4XGUWZVT", "Secret_Key": "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"}
+{"Message": "Welcome there agent! Use the credentials wisely! It should be live for the next 120 minutes! 
+  Our antivirus will wipe them out and the associated resources after the expected time usage.", 
+"Access_Key": "AKIAQYDFBGMS4XGUWZVT", 
+"Secret_Key": "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"}
 ```
 
 Each new GET request to the same URL seemed to obtain a different pair of values for **Access_Key** and **Secret_Key**.
