@@ -108,7 +108,7 @@ Default output format [None]: json
 $ export AWS_PROFILE=tisc
 ```
 
-I installed [enumerate-iam.py](https://github.com/andresriancho/enumerate-iam) from Github and used it to identify the permissions that the given credentials possess:
+I installed [enumerate-iam.py](https://github.com/andresriancho/enumerate-iam) from Github and used it to identify the permissions that the given credentials possessed:
 ```
 $ ./enumerate-py.iam --access-key AKIAQYDFBGMS4XGUWZVT --secret-key 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
 ```
@@ -125,7 +125,8 @@ A few roles stood out:
 - lambda_agent_webservice_role
 - lambda_cleaner_service_role
 
-The existence of these roles suggested that I may be required to spin up an EC2 instance (and tag it with the key 'agent' with value set to my username), and also write some AWS lambda functions.
+The previous talked about tagging EC2 compute instances, so I may have to create a new instance, rather than just accessing an existing one.
+The *lambda*-related roles suggest I may have to work with AWS lambda functions.
 
 
 
