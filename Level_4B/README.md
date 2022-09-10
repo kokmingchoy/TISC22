@@ -95,6 +95,9 @@ $ curl -H "x-cat-header: cats_rule_the_world" https://b40yqpyjb3.execute-api.ap-
 
 Each new GET request to the same URL seemed to obtain a different pair of values for **Access_Key** and **Secret_Key**.
 
+
+## Access Key and Secret Key
+
 I stored the new set of credentials under a different profile and prepared to work with it:
 ```
 $ aws configure --profile tisc
