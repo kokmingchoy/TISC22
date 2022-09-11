@@ -109,27 +109,62 @@ Default region name [None]: ap-southeast-1
 Default output format [None]: json
 
 $ export AWS_PROFILE=tisc
+$ export AWS_ACCESS_KEY_ID=AKIAQYDFBGMS4XGUWZVT
+$ export AWS_SECRET_ACCESS_KEY=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
 ```
 
-I installed [enumerate-iam.py](https://github.com/andresriancho/enumerate-iam) from Github and used it to identify the permissions that the given credentials possessed:
+There are a couple of tools out there to enumerate the AWS services available to an account given the Access Key ID and the Secret Access Key associated with that account.
+
+I tried both [weirdAAL](https://github.com/carnal0wnage/weirdAAL/wiki/Usage) and [enumerate-iam](https://github.com/andresriancho/enumerate-iam).
+
+I had some problems with **weirdAAL** initially (it did not work under Python 3.10, so I had to run it under Python 3.9; as an aside, I learned how to use [pyenv](https://realpython.com/intro-to-pyenv/)). 
+
+In my opinion **enumerate-iam.py** seemed to work better, and it returned more results in a shorter time.
+In both cases the programs eventually either timed out, or seemed to hang and I had to break out of it with Ctrl-C.
+
+Here's a summary of the results I obtained.
+
+Services identified by **weirdAAL**:
 ```
-$ ./enumerate-py.iam --access-key AKIAQYDFBGMS4XGUWZVT --secret-key 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
+ec2.DescribeRouteTables
+ec2.DescribeSecurityGroups
+ec2.DescribeSubnets
+ec2.DescribeVpcs
+elasticbeanstalk.DescribeApplicationVersions
+elasticbeanstalk.DescribeApplications
+elasticbeanstalk.DescribeEnvironments
+elasticbeanstalk.DescribeEvents
+iam.ListRoles
 ```
 
-One of the things I could do was to list the IAM roles:
+Services identified by **enumerate-iam.py**:
 ```
-$ aws iam list-roles
+dynamodb.describe_endpoints
+ec2.describe_regions
+ec2.describe_route_tables
+ec2.describe_security_groups
+ec2.describe_subnets
+ec2.describe_vpcs
+iam.list_instance_profiles
+iam.list_roles
+sts.get_caller_identity
+sts.get_session_token
 ```
 
-A few roles stood out:
-
+Running `aws iam list-roles`, I discovered the following interesting roles:
 - ec2_agent_role
 - lambda_agent_development_role
 - lambda_agent_webservice_role
 - lambda_cleaner_service_role
 
-The previous talked about tagging EC2 compute instances, so I may have to create a new instance, rather than just accessing an existing one.
-The *lambda*-related roles suggest I may have to work with AWS lambda functions.
+There is this article - [AWS IAM Privilege Escalation - Methods and Mitigation](https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/) - that provides some possibilities for leveraging those roles above.
 
+With the `ec2_agent_role` I tried to spin up an EC2 instance, but could not do so as the provided credentials did not have the permissions for the "ec2.run_instances" command.
+
+With the `lambda_agent_development_role` I tried to create a Lambda function, but again I hit a roadblock when the provided credentials did not have the permissions for the "lambda.create-function" command.
+
+At this point I have run out of time (and ideas), and so ends my attempt at TISC 2022.
+
+😞 **Level 4B Challenge was not solved**
 
 
