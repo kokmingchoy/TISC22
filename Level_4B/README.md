@@ -165,7 +165,7 @@ With the `ec2_agent_role` I tried to spin up an EC2 instance, but could not do s
 
 With the `lambda_agent_development_role` I tried to create a Lambda function, but again I hit a roadblock when the provided credentials did not have the permissions for the "lambda.create-function" command.
 
-At this point I have run out of time (and ideas), and so ends my attempt at TISC 2022.
+At this point I have run out of time (and ideas), and so ends my attempt at TISC 2022. 
 
 😞 **Level 4B Challenge was not solved**
 
